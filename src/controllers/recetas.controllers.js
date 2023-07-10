@@ -34,7 +34,7 @@ export const crearReceta = async (req, res) => {
     } catch (error) {
         console.log(error);
         res.status(404).json({
-            mensaje : 'Error al crear las receta'
+            mensaje : 'Error al crear la receta'
         })
     }
   }
