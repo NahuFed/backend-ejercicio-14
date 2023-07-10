@@ -12,8 +12,6 @@ export const obtenerRecetas = async (req, res) => {
     }
   }
 
-
-
 export const crearReceta = async (req, res) => {
     try {
         // console.log(req.body);
@@ -26,6 +24,21 @@ export const crearReceta = async (req, res) => {
         console.log(error);
         res.status(404).json({
             mensaje : 'Error al crear las receta'
+        })
+    }
+  }
+
+export const borrarReceta = async (req, res) => {
+    try {
+        console.log(req.params.id);
+        await Receta.findByIdAndDelete(req.params.id)
+        res.status(200).json({
+            mensaje: 'La receta fue eliminada correctamente'
+        })
+    } catch (error) {
+        console.log(error);
+        res.status(404).json({
+            mensaje : 'No se pudo eliminar la receta'
         })
     }
   }

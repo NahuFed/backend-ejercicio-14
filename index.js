@@ -16,7 +16,7 @@ app.listen(app.get("port"), () => {
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
-console.log(path.join(__dirname, "/public"));
+
 app.use(express.static(path.join(__dirname, "/public")));
 
 app.use("/apirecetas", recetasRouter);
