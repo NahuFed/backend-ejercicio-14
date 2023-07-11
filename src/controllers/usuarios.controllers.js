@@ -66,3 +66,31 @@ export const editarUsuario = async (req, res) => {
         })
     }
   }
+
+  export const login = async(req,res)=>{
+    try {
+        const {email, password} = req.body;
+        let usuario = await Usuario.findOne({email: email})
+
+        if(!usuario){
+            return  res.status(404).json({
+                mensaje: "Correo o password invalido"
+            })
+        }
+
+        if(usuario.password !== password){
+            return res.status(400).json({
+                mensaje: "Correo o password invalido"
+            })
+        }
+
+        res.status(200).json({
+            mensaje: "El usuario existe",
+            nombreUsuario: usuario.nombreUsuario,
+            uid: usuario._id
+        })
+    } catch (error) {
+        console.log(error)
+        res.status(404).json('Error al loguear un usuario')
+    }
+  }

@@ -5,6 +5,7 @@ import {
   editarUsuario,
   obtenerUsuarios,
   obtenerunUsuario,
+  login,
 } from "../controllers/usuarios.controllers";
 import { validarUsuario } from "../helpers/validarUsuario";
 
@@ -15,6 +16,6 @@ router
   .route("/usuarios/:id")
   .delete(borrarUsuario)
   .put(validarUsuario,editarUsuario)
-  .get(obtenerunUsuario);
-
+  .get(obtenerunUsuario)
+router.post("/",login);
 export default router;
