@@ -13,7 +13,7 @@ export const obtenerUsuarios = async (req, res) => {
   }
 export const obtenerunUsuario = async (req, res) => {
     try {
-        const usuario = await usuario.findById(req.params.id)
+        const usuario = await Usuario.findById(req.params.id)
         res.status(200).json(usuario)
     } catch (error) {
         console.log(error);

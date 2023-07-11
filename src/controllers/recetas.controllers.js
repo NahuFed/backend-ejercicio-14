@@ -25,6 +25,7 @@ export const obtenerunaReceta = async (req, res) => {
 
 export const crearReceta = async (req, res) => {
     try {
+        
         // console.log(req.body);
         const recetaNueva = new Receta(req.body);
         await recetaNueva.save();
