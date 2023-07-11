@@ -1,6 +1,5 @@
-import { validationResult } from 'express-validator';
 import Receta from '../models/receta'
-import resultadoValidacion from '../helpers/resultadoValidacion';
+
 
 export const obtenerRecetas = async (req, res) => {
     try {
