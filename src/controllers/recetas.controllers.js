@@ -1,5 +1,6 @@
 import { validationResult } from 'express-validator';
 import Receta from '../models/receta'
+import resultadoValidacion from '../helpers/resultadoValidacion';
 
 export const obtenerRecetas = async (req, res) => {
     try {
@@ -26,13 +27,7 @@ export const obtenerunaReceta = async (req, res) => {
 
 export const crearReceta = async (req, res) => {
     try {
-        const errors = validationResult(req);
         
-        if(!errors.isEmpty()){
-            return res.status(400).json({
-                errores: errors.array()
-            })
-        }
         // console.log(req.body);
         const recetaNueva = new Receta(req.body);
         await recetaNueva.save();

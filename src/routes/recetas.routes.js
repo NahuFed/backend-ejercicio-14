@@ -6,18 +6,16 @@ import {
   obtenerRecetas,
   obtenerunaReceta,
 } from "../controllers/recetas.controllers";
-import { check } from "express-validator";
+
+import { validarReceta } from "../helpers/validarReceta";
 
 const router = Router();
 
-router
-  .route("/recetas")
-  .get(obtenerRecetas)
-  .post([check("nombreReceta").notEmpty().withMessage('El nombre del producto es obligatorio')], crearReceta);
+router.route("/recetas").get(obtenerRecetas).post(validarReceta, crearReceta);
 router
   .route("/recetas/:id")
   .delete(borrarReceta)
-  .put(editarReceta)
+  .put(validarReceta, editarReceta)
   .get(obtenerunaReceta);
 
 export default router;
